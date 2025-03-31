@@ -1,29 +1,37 @@
-import React from 'react'
+// import React, { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
+import SettingsPage from "./pages/SettingsPage";
+import ProfilePage from "./pages/ProfilePage";
+import Navbar from "./components/Navbar";
+// import { useAuthStore } from "./lib/useAuthStore";
 
 function App() {
-  return (
+	// const { authUser, checkAuth } = useAuthStore();
+	
+
+	// useEffect(() => {
+	// 	checkAuth()
+	// }, [checkAuth])
+
+	return (
+		
 		<div>
-			<div className="card bg-base-100 w-96 shadow-xl">
-				<figure>
-					<img
-						src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-						alt="Shoes"
-					/>
-				</figure>
-				<div className="card-body">
-					<h2 className="card-title">
-						Shoes!
-						<div className="badge badge-secondary">NEW</div>
-					</h2>
-					<p>If a dog chews shoes whose shoes does he choose?</p>
-					<div className="card-actions justify-end">
-						<div className="badge badge-outline">Fashion</div>
-						<div className="badge badge-outline">Products</div>
-					</div>
-				</div>
-			</div>
+
+			<Navbar />
+			
+			<Routes>
+				
+				<Route path="/" element={<HomePage />} />
+				<Route path="/signup" element={<SignupPage />} />
+				<Route path="/login" element={<LoginPage />} />
+				<Route path="/setting" element={<SettingsPage />} />
+				<Route path="/profilepage" element={<ProfilePage />} />
+			</Routes>
 		</div>
 	);
 }
 
-export default App
+export default App;
