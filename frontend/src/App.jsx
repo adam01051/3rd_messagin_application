@@ -1,4 +1,4 @@
-// import React, { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SignupPage from "./pages/SignupPage";
@@ -6,15 +6,17 @@ import LoginPage from "./pages/LoginPage";
 import SettingsPage from "./pages/SettingsPage";
 import ProfilePage from "./pages/ProfilePage";
 import Navbar from "./components/Navbar";
-// import { useAuthStore } from "./lib/useAuthStore";
+
+import { useAuthStore } from "./lib/useAuthStore";
 
 function App() {
-	// const { authUser, checkAuth } = useAuthStore();
+	const { authUser, checkAuth } = useAuthStore();
 	
 
-	// useEffect(() => {
-	// 	checkAuth()
-	// }, [checkAuth])
+	useEffect(() => {
+		checkAuth()
+	}, [checkAuth])
+	console.log(authUser);
 
 	return (
 		
