@@ -8,8 +8,9 @@ import cors from "cors";
 const app = express();
 
 dotenv.config();
- 
-const PORT = process.env.Port;
+   
+app.use(express.json());
+const PORT = process.env.PORT;
 app.use(
 	cors({
 		origin: "http://localhost:5173",
