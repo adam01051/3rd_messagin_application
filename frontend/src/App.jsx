@@ -1,39 +1,25 @@
-import React, { useEffect } from "react";
+import React from "react";
+import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import SignupPage from "./pages/SignupPage";
+import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
-import SettingsPage from "./pages/SettingsPage";
 import ProfilePage from "./pages/ProfilePage";
-import Navbar from "./components/Navbar";
+import SettingsPage from "./pages/SignUpPage";
 
-import { useAuthStore } from "./lib/useAuthStore";
+const App = () => {
+  return (
+    <div>
+      <Navbar />
 
-function App() {
-	const { authUser, checkAuth } = useAuthStore();
-	
-
-	useEffect(() => {
-		checkAuth()
-	}, [checkAuth])
-	console.log(authUser);
-
-	return (
-		
-		<div>
-
-			<Navbar />
-			
-			<Routes>
-				
-				<Route path="/" element={<HomePage />} />
-				<Route path="/signup" element={<SignupPage />} />
-				<Route path="/login" element={<LoginPage />} />
-				<Route path="/setting" element={<SettingsPage />} />
-				<Route path="/profilepage" element={<ProfilePage />} />
-			</Routes>
-		</div>
-	);
-}
-
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+      </Routes>
+    </div>
+  );
+};
 export default App;
