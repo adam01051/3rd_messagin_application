@@ -8,6 +8,7 @@ import cors from "cors";
 const app = express();
 
 dotenv.config();
+app.use(cookieParser());
    
 app.use(express.json());
 const PORT = process.env.PORT;
