@@ -26,8 +26,10 @@ export const signup = async (req, res) => {
 			password: hashedPassword,
 		});
 		if (newUser) {
-			generateToken(newUser._id, res);
+
 			await newUser.save();
+			generateToken(newUser._id, res);
+
 			res.status(201).json({
 				_id: newUser.id,
 				fullName: newUser.fullName,
@@ -38,7 +40,7 @@ export const signup = async (req, res) => {
 			res.status(400).json({ message: "invalid user data" });
 		}
 	} catch (error) {
-		console.log("error in signing ", err);
+		console.log("error in signing ", error);
 		res.status(500).json({ message: "Something is wrong" });
 	}
 };
