@@ -9,7 +9,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <LoginPage />; <App />
+      <LoginPage />
       {/*if we take away SingnupPage the login will not show  */}
       {/* But in order it successfuly created a user we need to take away SignupPage */}
     </BrowserRouter>
