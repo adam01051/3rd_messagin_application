@@ -10,11 +10,12 @@ import Navbar from "./components/Navbar.jsx";
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
-    <BrowserRouter>
-      <Navbar />
-			 <LoginPage />
+		<BrowserRouter>
+
+			<App />
 			{/*if we take away SingnupPage the login will not show  */}
 			{/* But in order it successfuly created a user we need to take away SignupPage */}
 		</BrowserRouter>
 	</StrictMode>
 );
+
