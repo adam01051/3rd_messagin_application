@@ -68,7 +68,10 @@ export const login = async (req, res) => {
 					profilePic: user.profilePic,
 				});
 			} else {
-				return res.status(400).json({ message: "Invalid credentials" });
+				console.log("passworkd or email does not match");
+				return res
+					.status(400)
+					.json({ message: "Invalid credentials when login" });
 			}
 		}
 	} catch (error) {
@@ -96,9 +99,9 @@ export const updateProfile = async (req, res) => {
 		const userId = req.user._id;
 
 		if (!profilePic) {
-			return res.status(400).json({ message: "pic is reuired" });
+			return res.status(400).json({ message: "pic is required" });
 		}
-		const uploadResponce = await cloudinary.uploaded.upload(profilePic);
+		const uploadResponce = await cloudinary.uploader.upload(profilePic);
 		const updatedUser = await User.findByIdAndUpdate(
 			userId,
 			{ profilePic: uploadResponce.secure_url },
