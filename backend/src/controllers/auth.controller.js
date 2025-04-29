@@ -49,7 +49,7 @@ export const login = async (req, res) => {
 	const { fullName, email, password } = req.body;
 
 	try {
-		if (!password || !email || !fullName) {
+		if (!password || !email) {
 			return res.status(400).json({ message: "All  filds are required" });
 		}
 
@@ -79,6 +79,7 @@ export const login = async (req, res) => {
 
 export const logout = (req, res) => {
 	try {
+		console.log("log out successfully");
 		res.cookie("jwt", "", { maxAge: 0 });
 		res.status(200).json({ message: "logout successfully" });
 	} catch (error) {
