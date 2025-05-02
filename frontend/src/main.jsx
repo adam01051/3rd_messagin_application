@@ -15,8 +15,7 @@ createRoot(document.getElementById("root")).render(
       {/* <App /> */}
       {/*if we take away SingnupPage the login will not show  */}
       {/* But in order it successfuly created a user we need to take away SignupPage */}
-
-      <SettingsPage />
+      <HomePage />
     </BrowserRouter>
   </StrictMode>
 );
