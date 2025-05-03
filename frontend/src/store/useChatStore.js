@@ -2,6 +2,7 @@ import { create } from "zustand";
 import toast from "react-hot-toast";
 import { axiosInstance } from "../lib/axios";
 
+
 export const useChatStore = create((set) => ({
   messages: [],
   users: [],
@@ -16,6 +17,7 @@ export const useChatStore = create((set) => ({
       set({ users: res.data });
     } catch (error) {
       toast.error(error.response.data.message);
+      console.log("there was  problem getting users from database");
     } finally {
       set({ isUsersLoading: false });
     }
@@ -28,6 +30,7 @@ export const useChatStore = create((set) => ({
       set({ messages: res.data });
     } catch (error) {
       toast.error(error.response.data.message);
+         console.log("there was  problem getting messages from database");
     } finally {
       set({ isMessagesLoading: false });
     }
