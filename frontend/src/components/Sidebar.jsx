@@ -4,11 +4,13 @@ import SidebarSkeleton from "./skeletons/sideBarSkeleton";
 import { User, Users } from "lucide-react";
 
 function SideBar() {
-	const { getUsers, users, selectedUser, isUsersLoading } = useChatStore();
+  const { getUsers, users, selectedUser, isUsersLoading } = useChatStore();
+
 	const onlineUsers = [];
 	useEffect(() => {
-		getUsers;
+		getUsers();
 	}, [getUsers]);
+	console.log(users);
 
 	if (isUsersLoading) return <SidebarSkeleton />;
 
@@ -43,6 +45,13 @@ function SideBar() {
 							{onlineUsers.includes(user._id) && (
 								<span className="absolute bottom-0 right-0 size-3 bg-green-600 rounded-full ring-2 ring-zinc-900"></span>
 							)}
+						</div>
+
+						<div className="hidden lg:block text-left min-w-0">
+							<div className="font-medium truncate"> {user.fullName}</div>
+							<div className="text-sm text-zinc-500 ">
+								{onlineUsers.includes(user._id) ? "online" : "offline"}
+							</div>
 						</div>
 					</button>
 				))}
