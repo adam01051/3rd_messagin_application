@@ -5,9 +5,9 @@ import { User, Users } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore";
 
 function SideBar() {
-  const { getUsers, users, selectedUser, isUsersLoading } = useChatStore();
+  const { getUsers, users, selectedUser,setSelectedUser, isUsersLoading } = useChatStore();
 
-	const onlineUsers = useAuthStore();
+	const {onlineUsers} = useAuthStore();
 	useEffect(() => {
 		getUsers();
 	}, [getUsers]);
@@ -29,7 +29,7 @@ function SideBar() {
 				{users.map((user) => (
 					<button
 						key={user._id}
-						onClick={() => selectedUser(user)}
+						onClick={() => setSelectedUser(user)}
 						className={`w-full p-3 flex items-center  gap-3 hover:bg-base-300 transition-colors
             ${
 							selectedUser?._id === user._id
