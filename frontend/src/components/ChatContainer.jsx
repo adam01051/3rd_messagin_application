@@ -3,9 +3,13 @@ import { useEffect, useRef } from "react";
 
 
 import { useAuthStore } from "../store/useAuthStore";
-
+import MessageSkeleton from "./skeletons/messageSkeleton";
+import MessageInput from "./MessageInput";
+import SidebarSkeleton from "./skeletons/sideBarSkeleton";
+import ChatHeader from "./ChatHeader";
 
 const ChatContainer = () => {
+
 	const {
 		messages,
 		getMessages,
