@@ -5,13 +5,13 @@ import { User, Users } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore";
 
 function SideBar() {
-  const { getUsers, users, selectedUser,setSelectedUser, isUsersLoading } = useChatStore();
+	const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } =
+		useChatStore();
 
-	const {onlineUsers} = useAuthStore();
+	const { onlineUsers } = useAuthStore();
 	useEffect(() => {
 		getUsers();
 	}, [getUsers]);
-	console.log(users);
 
 	if (isUsersLoading) return <SidebarSkeleton />;
 

@@ -6,6 +6,7 @@ import { axiosInstance } from "../lib/axios";
 export const useChatStore = create((set, get) => ({
 	messages: [],
 	users: [],
+	onlineUsers: {};
 	selectedUser: null,
 	isUsersLoading: false,
 	isMessagesLoading: false,
@@ -23,12 +24,11 @@ export const useChatStore = create((set, get) => ({
 			set({ isUsersLoading: false });
 		}
 	},
-
+	//check
 	getMessages: async (userId) => {
 		set({ isMessagesLoading: true });
 		try {
-     
-      const res = await axiosInstance.get(`/messages/${userId}`);
+			const res = await axiosInstance.get(`/messages/${userId}`);
 			set({ messages: res.data });
 			console.log(res.data);
 		} catch (error) {
