@@ -10,6 +10,7 @@ export const useChatStore = create((set, get) => ({
 	selectedUser: null,
 	isUsersLoading: false,
 	isMessagesLoading: false,
+	
 
 	getUsers: async () => {
 		set({ isUsersLoading: true });
@@ -51,7 +52,7 @@ export const useChatStore = create((set, get) => ({
 			toast.error(error.response.data.message);
 		}
 	},
-	subscribeToMessages: async () => {
+	subscribeToMessages:  () => {
 		
 		const { selectedUser } = get();
 		if (!selectedUser) return;
