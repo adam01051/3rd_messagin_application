@@ -2,16 +2,26 @@ import React, { useEffect } from "react";
 import { useChatStore } from "../store/useChatStore";
 import SidebarSkeleton from "./skeletons/sideBarSkeleton";
 import { User, Users } from "lucide-react";
-import { useAuthStore } from "../store/useAuthStore";
+
 import { useState } from "react";
+import { useAuthStore } from "../store/useAuthStore";
 
 function SideBar() {
-	const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } =
-		useChatStore();
-	const { showOnlineOnly, setShowOnlineOnly } = useState(false);
-
+	const {
+		getUsers,
+		users,
+		selectedUser,
+		setSelectedUser,
+		isUsersLoading,
+	
+	} = useChatStore();
+	const [showOnlineOnly, setShowOnlineOnly ] = useState(false);
 	const { onlineUsers } = useAuthStore();
-	const fliteredUsers = onl
+	
+	const filteredUsers = showOnlineOnly
+		? users.filter((user) => onlineUsers.includes(user._id))
+		: users;
+	console.log(filteredUsers);
 	useEffect(() => {
 		getUsers();
 	}, [getUsers]);
@@ -37,12 +47,14 @@ function SideBar() {
 							/>
 							<span className="text-sm ">show online only</span>
 						</label>
-						<span className="text-xs text-zinc-500">({onlineUsers.length -1} online)</span>
+						<span className="text-xs text-zinc-500">
+							({onlineUsers.length - 1} online)
+						</span>
 					</div>
 				}
 			</div>
 			<div className="overflow-y-auto w-full py-3">
-				{fliteredUsers.map((user) => (
+				{filteredUsers.map((user) => (
 					<button
 						key={user._id}
 						onClick={() => setSelectedUser(user)}
