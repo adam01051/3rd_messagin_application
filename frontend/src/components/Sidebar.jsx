@@ -3,12 +3,15 @@ import { useChatStore } from "../store/useChatStore";
 import SidebarSkeleton from "./skeletons/sideBarSkeleton";
 import { User, Users } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore";
+import { useState } from "react";
 
 function SideBar() {
 	const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } =
 		useChatStore();
+	const { showOnlineOnly, setShowOnlineOnly } = useState(false);
 
 	const { onlineUsers } = useAuthStore();
+	const fliteredUsers = onl
 	useEffect(() => {
 		getUsers();
 	}, [getUsers]);
@@ -23,10 +26,23 @@ function SideBar() {
 
 					<span className="font-medium hidden lg:block">Contacts </span>
 				</div>
-				{/* will need later  to add online filter  for  contacts */}
+				{
+					<div className="mt-3 hidden lg:flex items-center gap-2">
+						<label className="cursor-pointer flex items-center gap-2">
+							<input
+								type="checkbox"
+								checked={showOnlineOnly}
+								onChange={(e) => setShowOnlineOnly(e.target.checked)}
+								className="checkbox checkbox-sm"
+							/>
+							<span className="text-sm ">show online only</span>
+						</label>
+						<span className="text-xs text-zinc-500">({onlineUsers.length -1} online)</span>
+					</div>
+				}
 			</div>
 			<div className="overflow-y-auto w-full py-3">
-				{users.map((user) => (
+				{fliteredUsers.map((user) => (
 					<button
 						key={user._id}
 						onClick={() => setSelectedUser(user)}
