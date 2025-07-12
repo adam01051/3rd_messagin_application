@@ -14,7 +14,7 @@ import {
   MessageSquare,
   User,
 } from "lucide-react";
-
+ 
 const SignupPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
