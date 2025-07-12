@@ -16,7 +16,7 @@ export const useChatStore = create((set, get) => ({
 		try {
 			const res = await axiosInstance.get("/messages/user");
 
-			set({ users: res.data });
+			set({ users: Array.isArray(res.data) ? res.data : [] });
 		} catch (error) {
 			toast.error(error.response.data.message);
 			console.log("there was  problem getting users from database");
